@@ -12,22 +12,20 @@ password = os.getenv("DB_PASSWORD")
 host = os.getenv("DB_HOST")
 port = os.getenv("DB_PORT")
 database = os.getenv("DB_NAME")
-sslmode = os.getenv("DB_SSLMODE")
+
 
 
 DATABASE_URL = (
-    f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode={sslmode}"
+    f"postgresql://{user}:{password}@{host}:{port}/{database}"
 )
 
 
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"sslmode": "require"},
     pool_pre_ping=True,
     pool_recycle=300,
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-# SQLAlchemy 2.0 এর মডার্ন স্টাইল
 class Base(DeclarativeBase):
     pass
 
