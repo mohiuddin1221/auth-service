@@ -30,7 +30,7 @@ jobs:
       - name: Install Dependencies & Test Tools
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt,
+          pip install -r requirements.txt
 
       - name: Run Database Migrations & Unit Tests
         run: |
